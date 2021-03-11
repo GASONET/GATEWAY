@@ -1,0 +1,149 @@
+<?xml version="1.0"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. -->
+<xs:schema xmlns:tns="http://localhost:3000/RegistrarContratoService"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://localhost:3000/RegistrarContratoService" version="1.0">
+
+<xs:element name="ConsultarMedioPago" type="tns:ConsultarMedioPago"></xs:element>
+
+<xs:element name="ConsultarMedioPagoResponse" type="tns:ConsultarMedioPagoResponse"></xs:element>
+
+<xs:element name="ConsultarRedPago" type="tns:ConsultarRedPago"></xs:element>
+
+<xs:element name="ConsultarRedPagoResponse" type="tns:ConsultarRedPagoResponse"></xs:element>
+
+<xs:element name="RegistroModicarMedio" type="tns:RegistroModicarMedio"></xs:element>
+
+<xs:element name="RegistroModicarMedioResponse" type="tns:RegistroModicarMedioResponse"></xs:element>
+
+<xs:element name="RegistroNumeroContrato" type="tns:RegistroNumeroContrato"></xs:element>
+
+<xs:element name="RegistroNumeroContratoResponse" type="tns:RegistroNumeroContratoResponse"></xs:element>
+
+<xs:complexType name="RegistroModicarMedio">
+<xs:sequence>
+<xs:element minOccurs="0" name="dto" type="tns:registroContratoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registroContratoDto">
+<xs:complexContent>
+<xs:extension base="tns:pagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="numeroContrato" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroIdentificacion" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="tipoIdentificacion" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="pagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoVerificacion" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="idCanal" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="idOrganizacion" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="origen" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="usuario" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RegistroModicarMedioResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:respuestaRegistroContratoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaRegistroContratoDto">
+<xs:complexContent>
+<xs:extension base="tns:respuestaPagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="hashRom" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="respuestaPagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoRespuesta" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="fechaTransaccion" type="xs:dateTime"></xs:element>
+<xs:element minOccurs="0" name="mensajeRespuesta" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ConsultarMedioPago">
+<xs:sequence>
+<xs:element minOccurs="0" name="dto" type="tns:consultaMedioPagoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultaMedioPagoDto">
+<xs:complexContent>
+<xs:extension base="tns:pagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="numeroContrato" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ConsultarMedioPagoResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:respuestaConsultaMedioPagoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaConsultaMedioPagoDto">
+<xs:complexContent>
+<xs:extension base="tns:respuestaPagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="exiteMedioPago" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ConsultarRedPago">
+<xs:sequence>
+<xs:element minOccurs="0" name="dto" type="tns:consultaRedPagoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consultaRedPagoDto">
+<xs:complexContent>
+<xs:extension base="tns:pagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="numeroContrato" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ConsultarRedPagoResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:respuestaConsultaRedPagoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaConsultaRedPagoDto">
+<xs:complexContent>
+<xs:extension base="tns:respuestaPagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="red" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="RegistroNumeroContrato">
+<xs:sequence>
+<xs:element minOccurs="0" name="dto" type="tns:registroContratoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RegistroNumeroContratoResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:respuestaRegistroContratoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

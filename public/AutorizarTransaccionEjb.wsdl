@@ -1,0 +1,101 @@
+<definitions 
+    targetNamespace="http://localhost:3000/AutorizarTransaccionService"
+    name="AutorizarTransaccionService"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+    xmlns:wsp="http://www.w3.org/ns/ws-policy"
+    xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy"
+    xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://localhost:3000/AutorizarTransaccionService"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://schemas.xmlsoap.org/wsdl/">
+   <types>
+      <xsd:schema>
+         <!-- <xsd:import schemaLocation="src/assets/AutorizarTransaccionEjb.xsd" namespace="http://ws.motorpagos.iev.ptesa.com/"/> -->
+         <!-- <xsd:import schemaLocation="./AutorizarTransaccionEjb?xsd=1" namespace="http://ws.motorpagos.iev.ptesa.com/"/> -->
+         <xsd:import schemaLocation="./AutorizarTransaccionEjb.xsd" namespace="http://ws.motorpagos.iev.ptesa.com/"/>
+      </xsd:schema>
+   </types>
+   <message name="Autorizar">
+      <part name="parameters" element="tns:Autorizar"/>
+   </message>
+   <message name="AutorizarResponse">
+      <part name="parameters" element="tns:AutorizarResponse"/>
+   </message>
+   <message name="IEVMotorPagosException">
+      <part name="fault" element="tns:IEVMotorPagosException"/>
+   </message>
+   <message name="Reversar">
+      <part name="parameters" element="tns:Reversar"/>
+   </message>
+   <message name="ReversarResponse">
+      <part name="parameters" element="tns:ReversarResponse"/>
+   </message>
+   <message name="AutorizarDirecto">
+      <part name="parameters" element="tns:AutorizarDirecto"/>
+   </message>
+   <message name="AutorizarDirectoResponse">
+      <part name="parameters" element="tns:AutorizarDirectoResponse"/>
+   </message>
+   <portType name="AutorizarTransaccionEjb">
+      <operation name="Autorizar">
+         <input message="tns:Autorizar" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/AutorizarRequest"/>
+         <output message="tns:AutorizarResponse" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/AutorizarResponse"/>
+         <fault name="IEVMotorPagosException" message="tns:IEVMotorPagosException" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/Autorizar/Fault/IEVMotorPagosException"/>
+      </operation>
+      <operation name="Reversar">
+         <input message="tns:Reversar" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/ReversarRequest"/>
+         <output message="tns:ReversarResponse" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/ReversarResponse"/>
+         <fault name="IEVMotorPagosException" message="tns:IEVMotorPagosException" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/Reversar/Fault/IEVMotorPagosException"/>
+      </operation>
+      <operation name="AutorizarDirecto">
+         <input message="tns:AutorizarDirecto" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/AutorizarDirectoRequest"/>
+         <output message="tns:AutorizarDirectoResponse" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/AutorizarDirectoResponse"/>
+         <fault name="IEVMotorPagosException" message="tns:IEVMotorPagosException" wsam:Action="http://ws.motorpagos.iev.ptesa.com/AutorizarTransaccionEjb/AutorizarDirecto/Fault/IEVMotorPagosException"/>
+      </operation>
+   </portType>
+   <binding name="AutorizarTransaccionEjbPortBinding" type="tns:AutorizarTransaccionEjb">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation name="Autorizar">
+         <soap:operation soapAction=""/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+         <fault name="IEVMotorPagosException">
+            <soap:fault use="literal" name="IEVMotorPagosException"/>
+         </fault>
+      </operation>
+      <operation name="Reversar">
+         <soap:operation soapAction=""/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+         <fault name="IEVMotorPagosException">
+            <soap:fault use="literal" name="IEVMotorPagosException"/>
+         </fault>
+      </operation>
+      <operation name="AutorizarDirecto">
+         <soap:operation soapAction=""/>
+         <input>
+            <soap:body use="literal"/>
+         </input>
+         <output>
+            <soap:body use="literal"/>
+         </output>
+         <fault name="IEVMotorPagosException">
+            <soap:fault use="literal" name="IEVMotorPagosException"/>
+         </fault>
+      </operation>
+   </binding>
+   <service name="AutorizarTransaccionService">
+      <port name="AutorizarTransaccionEjbPort" binding="tns:AutorizarTransaccionEjbPortBinding">
+         <soap:address location="http://localhost:3000/AutorizarTransaccionService"/>
+      </port>
+   </service>
+</definitions>

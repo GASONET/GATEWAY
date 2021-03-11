@@ -1,0 +1,148 @@
+<?xml version="1.0"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.3 (tags/2.3-7528; 2013-04-29T19:34:10+0000) JAXWS-RI/2.2.8 JAXWS/2.2 svn-revision#unknown. -->
+<xs:schema xmlns:tns="http://localhost:3000/AutorizarTransaccionService"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://localhost:3000/AutorizarTransaccionService" version="1.0">
+
+<xs:element name="Autorizar" type="tns:Autorizar"></xs:element>
+
+<xs:element name="AutorizarDirecto" type="tns:AutorizarDirecto"></xs:element>
+
+<xs:element name="AutorizarDirectoResponse" type="tns:AutorizarDirectoResponse"></xs:element>
+
+<xs:element name="AutorizarResponse" type="tns:AutorizarResponse"></xs:element>
+
+<xs:element name="IEVMotorPagosException" type="tns:IEVMotorPagosException"></xs:element>
+
+<xs:element name="Reversar" type="tns:Reversar"></xs:element>
+
+<xs:element name="ReversarResponse" type="tns:ReversarResponse"></xs:element>
+
+<xs:complexType name="AutorizarDirecto">
+<xs:sequence>
+<xs:element minOccurs="0" name="dto" type="tns:transaccionDirectoDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="transaccionDirectoDto">
+<xs:complexContent>
+<xs:extension base="tns:pagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoBanco" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="codigoComercio" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="codigoSeguridad" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="correoElectronico" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="fechaVencimiento" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="franquicia" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="nombreCliente" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroCelular" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroControl" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroCuenta" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroIdCliente" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroTarjeta" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroTerminal" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="pin" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="referencia" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="segundaClave" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="tipoIdentificacion" type="xs:short"></xs:element>
+<xs:element minOccurs="0" name="tipoMedio" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="valorTransaccion" type="xs:decimal"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="pagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoVerificacion" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="idCanal" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="idOrganizacion" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="origen" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="usuario" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AutorizarDirectoResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:respuestaTransaccionDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="respuestaTransaccionDto">
+<xs:complexContent>
+<xs:extension base="tns:respuestaPagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoBanco" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="franquicia" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="idOrgnizacionCentralizadora" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="numeroAutorizacion" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroTarjeta" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroTxRed" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="red" type="xs:int"></xs:element>
+<xs:element minOccurs="0" name="terminal" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="tipoMedio" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="respuestaPagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoRespuesta" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="fechaTransaccion" type="xs:dateTime"></xs:element>
+<xs:element minOccurs="0" name="mensajeRespuesta" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="IEVMotorPagosException">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoMensaje" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="message" type="xs:string"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Reversar">
+<xs:sequence>
+<xs:element minOccurs="0" name="dto" type="tns:transaccionDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="transaccionDto">
+<xs:complexContent>
+<xs:extension base="tns:pagoBaseDto">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigoComercio" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="codigoEstacion" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="codigoSeguridad" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="idMedioPago" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroAutorizacionTx" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroContrato" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroControl" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroTerminal" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroTransaccionRed" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="numeroTx" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="referencia" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="rom" type="xs:string"></xs:element>
+<xs:element minOccurs="0" name="valorTransaccion" type="xs:decimal"></xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="ReversarResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:respuestaTransaccionDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="Autorizar">
+<xs:sequence>
+<xs:element minOccurs="0" name="dto" type="tns:transaccionDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AutorizarResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:respuestaTransaccionDto"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,77 @@
+{
+  "name": "gracialab-api-gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "build": "npm-run-all clean lint tsc",
+    "lint": "eslint . --ext .ts",
+    "start": "node ./dist",
+    "tsc": "tsc",
+    "test": "jest",
+    "deploy": "npm-run-all build start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gprog-col/gracialab-api-gateway.git"
+  },
+  "keywords": [
+    "Gateway",
+    "Api",
+    "SOAP",
+    "REST"
+  ],
+  "author": "GRPROG",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gprog-col/gracialab-auth-service/issues"
+  },
+  "homepage": "https://github.com/gprog-col/gracialab-auth-service#readme",
+  "_moduleAliases": {
+    "~": "dist",
+    "@controllers": "dist/controllers",
+    "@services": "dist/services",
+    "@helpers": "dist/helpers",
+    "@models": "dist/models",
+    "@database": "dist/database",
+    "@middleware": "dist/middleware"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "log4js": "^6.3.0",
+    "module-alias": "^2.2.2",
+    "morgan": "^1.10.0",
+    "node-jose": "^2.0.0",
+    "soap": "^0.36.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.11",
+    "@types/helmet": "^4.0.0",
+    "@types/jest": "^26.0.20",
+    "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/jwk-to-pem": "^2.0.0",
+    "@types/module-alias": "^2.0.0",
+    "@types/morgan": "^1.9.2",
+    "@types/mysql": "^2.15.18",
+    "@types/node-jose": "^1.1.5",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.20.0",
+    "jest": "^26.6.3",
+    "mysql": "^2.18.1",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^26.5.1",
+    "typescript": "^4.1.5"
+  }
+}
