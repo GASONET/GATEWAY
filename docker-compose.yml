@@ -14,14 +14,14 @@ services:
       - SERVER_PORT=3000
   
   auth: 
-    build: ./../gracialab-auth-service/
+    build: ./../AUTH/
     restart: always
     # volumes: 
     #   - './../gracialab-auth-service/scr:/usr/src/app/'
     ports: 
       - '5000:5000'
     env_file:
-      - ./../gracialab-auth-service/.env
+      - ./../AUTH/.env
     environment: 
       - SERVER_PORT=5000
   

@@ -1,7 +1,7 @@
 FROM node:12
 
-RUN mkdir -p /usr/gracialab-api-gateway
-WORKDIR /usr/gracialab-api-gateway
+RUN mkdir -p /usr/GATEWAY
+WORKDIR /usr/GATEWAY
 
 COPY package*.json ./
 COPY public/ ./
