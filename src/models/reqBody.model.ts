@@ -42,7 +42,7 @@ export const reqRegistroSchema = joi.object({
     origen: joi.string().optional(),
     usuario: joi.string().optional(),
     numeroContrato: joi.string().required(),
-    numeroAuditoria: joi.string().required(),
+    numeroAuditoria: joi.optional().allow(''),
     numeroIdentificacion: joi.string().required(),
     tipoIdentificacion: joi.string().required(),
 })
