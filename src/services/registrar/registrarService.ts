@@ -82,13 +82,12 @@ export class RegistrarService implements IRegisterService {
                 idOrganizacion: dataDto.idOrganizacion,
                 numeroContrato: dataDto.numeroContrato, //crypto.createHash('sha256').update(dataDto.numeroContrato).digest('hex'),
                 tipoIdentificacion: Number(dataDto.tipoIdentificacion),
-                numeroAuditoria: dataDto.numeroAuditoria,
+                numeroAuditoria: dataDto.numeroAuditoria ? dataDto.numeroAuditoria : Math.random().toString(36).substring(2),
                 numeroIdentificacion: dataDto.numeroIdentificacion,
             }
         }
 
         const date: string = new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString()
-
         try {
             const response: any = await callRestServer(String(`${process.env.REST_URL}contrato/adicionarcontrato`), callData, data.datoRespuesta)
             return {
